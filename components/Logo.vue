@@ -1,35 +1,53 @@
 <template>
-  <svg
-    class="NuxtLogo"
-    width="245"
-    height="180"
-    viewBox="0 0 452 342"
-    xmlns="http://www.w3.org/2000/svg"
+  <a
+    :class="classList"
+    class="no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+    href="#"
   >
-    <path
-      d="M139 330l-1-2c-2-4-2-8-1-13H29L189 31l67 121 22-16-67-121c-1-2-9-14-22-14-6 0-15 2-22 15L5 303c-1 3-8 16-2 27 4 6 10 12 24 12h136c-14 0-21-6-24-12z"
-      fill="#00C58E"
-    />
-    <path
-      d="M447 304L317 70c-2-2-9-15-22-15-6 0-15 3-22 15l-17 28v54l39-67 129 230h-49a23 23 0 0 1-2 14l-1 1c-6 11-21 12-23 12h76c3 0 17-1 24-12 3-5 5-14-2-26z"
-      fill="#108775"
-    />
-    <path
-      d="M376 330v-1l1-2c1-4 2-8 1-12l-4-12-102-178-15-27h-1l-15 27-102 178-4 12a24 24 0 0 0 2 15c4 6 10 12 24 12h190c3 0 18-1 25-12zM256 152l93 163H163l93-163z"
-      fill="#2F495E"
-    />
-  </svg>
+    <!--Icon from: http://www.potlabicons.com/ -->
+    <svg
+      class="h-8 fill-current inline"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512.005 512.005"
+    >
+      <rect
+        x="16.539"
+        y="425.626"
+        width="479.767"
+        height="50.502"
+        transform="matrix(1,0,0,1,0,0)"
+      />
+      <path
+        class="plane-take-off"
+        d=" M 510.7 189.151 C 505.271 168.95 484.565 156.956 464.365 162.385 L 330.156 198.367 L 155.924 35.878 L 107.19 49.008 L 211.729 230.183 L 86.232 263.767 L 36.614 224.754 L 0 234.603 L 45.957 314.27 L 65.274 347.727 L 105.802 336.869 L 240.011 300.886 L 349.726 271.469 L 483.935 235.486 C 504.134 230.057 516.129 209.352 510.7 189.151 Z "
+      /></svg
+    >&nbsp;LANDING
+  </a>
 </template>
 
-<style>
-.NuxtLogo {
-  animation: 1s appear;
-  margin: auto;
+<script>
+export default {
+  name: 'Logo',
+  props: {
+    isStickable: {
+      type: Boolean,
+      default: false,
+    },
+    isSticky: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    classList() {
+      let classList = ''
+      if (this.isStickable) {
+        classList = this.isSticky ? 'text-gray-800' : 'text-white'
+      } else {
+        classList = 'text-orange-600'
+      }
+      return classList
+    },
+  },
 }
-
-@keyframes appear {
-  0% {
-    opacity: 0;
-  }
-}
-</style>
+</script>
