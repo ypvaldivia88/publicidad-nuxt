@@ -1,38 +1,57 @@
 <template>
-  <div class="leading-normal tracking-normal text-white gradient">
-    <the-header />
-    <nuxt />
-    <the-footer />
-  </div>
+  <main>
+    <no-ssr>
+    <notifications group="alerts"
+                   position="bottom right">
+      <template slot="body" slot-scope="props">
+        <b-alert :show="props.item.duration || 3000"
+                 dismissible
+                 :variant="props.item.type || 'info'"
+                 @dismissed="props.item.timer=0">
+          <p>{{props.item.text}}</p>
+          <b-progress :variant="props.item.type"
+                      striped
+                      :animated="true"
+                      :max="props.item.duration"
+                      :value="props.item.timer"
+                      height="4px">
+          </b-progress>
+        </b-alert>
+      </template>
+    </notifications>
+    </no-ssr>
+    <b-row no-gutters class="mb-3">
+      <b-col class="bg-dark">
+        <b-navbar toggleable="md" type="dark" variant="dark">
+          <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+          <b-navbar-brand href="/">My App</b-navbar-brand>
+          <b-collapse is-nav id="nav_collapse">
+            <b-navbar-nav>
+              <b-nav-item class="text-white" :to="'/cars'">Carros</b-nav-item>
+              <b-nav-item class="text-white" :to="'/admin'" v-if="admin">Administrar</b-nav-item>
+            </b-navbar-nav>
+            <b-navbar-nav class="ml-auto">
+              <b-nav-item class="text-white" :to="'login'" v-if="!$auth.loggedIn">Acceder</b-nav-item>
+              <b-nav-item class="text-white" @click="logout" v-if="$auth.loggedIn">Salir</b-nav-item>
+            </b-navbar-nav>
+          </b-collapse>
+        </b-navbar>
+      </b-col>
+    </b-row>
+    <b-container fluid>
+      <nuxt/>
+    </b-container>
+  </main>
 </template>
-
 <script>
-import TheHeader from '@/components/TheHeader.vue'
-import TheFooter from '@/components/TheFooter.vue'
-
-export default {
-  components: {
-    'the-header': TheHeader,
-    'the-footer': TheFooter,
-  },
-}
+  export default {
+    methods: {
+      logout() {
+        this.$auth.logout()
+      },
+      admin() {
+        return this.$auth.loggedIn && this.$auth.user.admin
+      }
+    }
+  }
 </script>
-
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-.gradient {
-  /* background: linear-gradient(90deg, #6200ee 0%, #03dac5 100%);  */
-  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
-}
-</style>

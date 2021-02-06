@@ -1,0 +1,53 @@
+{
+  "actions": "Acciones",
+  "admin": "Admin",
+  "yes": "Si",
+  "no": "No",
+  "edit": "Editar",
+  "email": "Correo",
+  "remember_me": "Recuérdame",
+  "password": "Contraseña",
+  "password_confirm": "Confirmar Contraseña",
+  "login": "Iniciar Sesión",
+  "forgot_password": "Olvidó su Contraseña?",
+  "remove": "Eliminar",
+  "destroy_confirm_title": "Confirme por favor",
+  "destroy_confirm": "Seguro que desea eliminar esto?",
+  "logout": "Cerrar sesión",
+  "back": "Atrás",
+  "save": "Salvar",
+  "update": "Actualizar",
+  "updated_at": "Última Actualización",
+  "forms": {
+    "errors": {
+      "required": "Por favor rellene este campo.",
+      "standard": "Ha ocurrido un error en el servidor.",
+      "invalid": "Por favor solucione los errores en el formulario."
+    }
+  },
+  "cars": {
+    "singular": "Car",
+    "plural": "Cars",
+    "new": "New Car",
+    "edit": "Edit Car",
+    "make": "Manufacturer",
+    "model": "Model",
+    "year": "Year",
+    "color": "Color",
+    "make_placeholder": "Manufacturer of vehicle"
+  },
+  "users": {
+    "sessions": {
+      "new": {
+        "title": "Acceder"
+      },
+      "invalid": "Datos de autenticación incorrectos.",
+      "valid": "Bienvenido!"
+    },
+    "registrations": {
+      "new": {
+        "title": "Registro"
+      }
+    }
+  }
+}
