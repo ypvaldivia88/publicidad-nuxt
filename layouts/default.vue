@@ -27,7 +27,7 @@
           <b-navbar-brand href="/">My App</b-navbar-brand>
           <b-collapse is-nav id="nav_collapse">
             <b-navbar-nav>
-              <b-nav-item class="text-white" :to="'/cars'">Carros</b-nav-item>
+              <!-- <b-nav-item class="text-white" :to="'/cars'">Carros</b-nav-item> -->
               <b-nav-item class="text-white" :to="'/categories'">Categorías</b-nav-item>
               <b-nav-item class="text-white" :to="'/clients'">Clientes</b-nav-item>
               <b-nav-item class="text-white" :to="'/publicities'">Publicidades</b-nav-item>
