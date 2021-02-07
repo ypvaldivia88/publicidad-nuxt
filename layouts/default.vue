@@ -28,6 +28,7 @@
           <b-collapse is-nav id="nav_collapse">
             <b-navbar-nav>
               <b-nav-item class="text-white" :to="'/cars'">Carros</b-nav-item>
+              <b-nav-item class="text-white" :to="'/categories'">Categorías</b-nav-item>
               <b-nav-item class="text-white" :to="'/admin'" v-if="admin">Administrar</b-nav-item>
             </b-navbar-nav>
             <b-navbar-nav class="ml-auto">
