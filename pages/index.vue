@@ -3,16 +3,16 @@
     <div>
       <app-logo/>
       <h1 class="title">
-        crud-example
+        Publicidades
       </h1>
       <h2 class="subtitle">
-        An example project for building RESTful interfaces with Nuxt.js
+        Joven Club de Computación y Electrónica
       </h2>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
           target="_blank"
-          class="button--green">Documentation</a>
+          class="button--green">Documentación</a>
         <a
           href="https://github.com/nuxt/nuxt.js"
           target="_blank"
