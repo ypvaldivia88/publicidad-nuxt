@@ -2,7 +2,7 @@
   <b-row>
     <b-col>
       <b-btn variant="outline-success" class="mb-3" :to="'/publicities/new'">
-        Nuevo Publicityro
+        Nueva Publicidad
       </b-btn>
       <b-table striped hover :items="list" :fields="fields">
         <template slot="name" slot-scope="data">
