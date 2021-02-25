@@ -26,14 +26,14 @@ export const mutations = {
 
 export const actions = {
   async get({ commit }) {
-    await this.$axios.get(`/clients`).then(res => {
+    await this.$axios.get(`/clientes`).then(res => {
       if (res.status === 200) {
         commit("set", res.data);
       }
     });
   },
   async show({ commit }, params) {
-    await this.$axios.get(`/clients/${params.client_id}`).then(res => {
+    await this.$axios.get(`/clientes/${params.client_id}`).then(res => {
       if (res.status === 200) {
         commit("mergeClients", res.data);
       }
@@ -49,12 +49,12 @@ export const actions = {
     await commit("add", client);
   },
   create({ commit }, params) {
-    return this.$axios.post(`/clients`, { client: params });
+    return this.$axios.post(`/clientes`, { client: params });
   },
   update({ commit }, params) {
-    return this.$axios.put(`/clients/${params.id}`, { client: params });
+    return this.$axios.put(`/clientes/${params.id}`, { client: params });
   },
   delete({ commit }, params) {
-    return this.$axios.delete(`/clients/${params.id}`);
+    return this.$axios.delete(`/clientes/${params.id}`);
   }
 };

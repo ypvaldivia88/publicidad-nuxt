@@ -26,14 +26,14 @@ export const mutations = {
 
 export const actions = {
   async get({ commit }) {
-    await this.$axios.get(`/categories`).then(res => {
+    await this.$axios.get(`/categorias`).then(res => {
       if (res.status === 200) {
         commit("set", res.data);
       }
     });
   },
   async show({ commit }, params) {
-    await this.$axios.get(`/categories/${params.category_id}`).then(res => {
+    await this.$axios.get(`/categorias/${params.category_id}`).then(res => {
       if (res.status === 200) {
         commit("mergeCategories", res.data);
       }
@@ -49,12 +49,12 @@ export const actions = {
     await commit("add", category);
   },
   create({ commit }, params) {
-    return this.$axios.post(`/categories`, { category: params });
+    return this.$axios.post(`/categorias`, { category: params });
   },
   update({ commit }, params) {
-    return this.$axios.put(`/categories/${params.id}`, { category: params });
+    return this.$axios.put(`/categorias/${params.id}`, { category: params });
   },
   delete({ commit }, params) {
-    return this.$axios.delete(`/categories/${params.id}`);
+    return this.$axios.delete(`/categorias/${params.id}`);
   }
 };
