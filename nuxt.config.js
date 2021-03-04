@@ -61,10 +61,20 @@ module.exports = {
   auth: {
     strategies: {
       local: {
+        token: { type: "Bearer" },
         endpoints: {
-          login: { url: "/auth/login", method: "post", propertyName: "jwt" },
-          logout: { url: "/auth/logout", method: "post" },
-          user: { url: "/users/1", method: "get", propertyName: "user" }
+          login: {
+            url: "/login",
+            method: "post",
+            propertyName: "tokens.accessToken"
+          },
+          refresh: {
+            url: "/refresh",
+            method: "post",
+            propertyName: "tokens.refreshToken"
+          },
+          logout: { url: "/logout", method: "post" },
+          user: { url: "/users/me", method: "get", propertyName: false }
         }
       }
     }
@@ -72,7 +82,7 @@ module.exports = {
   axios: {
     /* set API_URL environment variable to configure access to the API
      */
-    baseURL: process.env.API_URL || "http://localhost:3001/",
+    baseURL: process.env.API_URL || "http://localhost:4000/api/v1/",
     redirectError: {
       401: "/login",
       404: "/notfound"

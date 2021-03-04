@@ -15,11 +15,7 @@
                       placeholder="Contraseña"></b-form-input>
       </b-form-group>
 
-      <b-form-group id="rememberMeCheckbox">
-        <b-form-checkbox v-model="form.rememberme" id="rememberMe">
-          Recuérdame
-        </b-form-checkbox>
-      </b-form-group>
+     
       <b-button type="submit" variant="primary">Acceder</b-button>
     </b-form>
     <hr>
@@ -40,8 +36,7 @@
       return {
         form: {
           email: '',
-          password: '',
-          rememberme: false
+          password: ''
         }
       }
     },
@@ -57,11 +52,12 @@
         .catch(this.unauthorized)
       },
       success() {
-        this.$notify({group: 'alerts', text: 'Ud. se ha autenticado correctamente'})
+        this.$notify({group: 'alerts', text: 'Ud. se ha autenticado correctamente'})  
+        console.log(this.$auth)      
         this.$router.push('/');
       },
       unauthorized() {
-        this.$notify({group: 'alerts', text: 'Los datos de acceso no son válidos'})
+        this.$notify({group: 'alerts', text: 'Los datos de acceso no son válidos', color: 'red'})
       }
     }
   }

@@ -2,10 +2,10 @@
   <b-container fluid class="footer-pad">
     <b-row class="h-60" align-h="center" align-v="center">
       <b-col sm="12" lg="6">
-        <login v-if="!$auth.loggedIn"></login>
+        <register v-if="!$auth.loggedIn"></register>
         <b-card v-if="$auth.loggedIn" variant="success">
           <b-progress :value="100" striped animated></b-progress>
-          Cargando <b-link :to="'/usuarios/'">Usuarios</b-link>...
+          Cargando <b-link :to="'/'">Publicidades</b-link>...
         </b-card>
       </b-col>
     </b-row>
@@ -17,11 +17,12 @@
   }
 </style>
 <script>
-  import Login from '~/components/Login.vue'
+  import Register from '~/components/Register.vue'
 
   export default {
+    auth: false,
     components: {
-      Login
+      Register
     }
   }
 </script>

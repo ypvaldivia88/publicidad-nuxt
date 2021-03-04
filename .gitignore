@@ -9,3 +9,18 @@ npm-debug.log
 
 # Nuxt generate
 dist
+
+# dependencies
+api/node_modules
+
+# logs
+api/npm-debug.log
+
+# Nuxt build
+api/.nuxt
+
+# Nuxt generate
+api/dist
+
+api/.env
+
