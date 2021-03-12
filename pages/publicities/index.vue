@@ -5,23 +5,14 @@
         Nueva Publicidad
       </b-btn>
       <b-table striped hover :items="list" :fields="fields">
-        <template slot="name" slot-scope="data">
-          <b-link :to="`/publicities/${data.item.id}/edit`">{{data.item.name}}</b-link>
+        <template #cell(nombre)="data">
+          <NuxtLink :to="`/publicities/${data.item.id}/edit`">{{data.item.nombre}}</NuxtLink>
         </template>
-        <template slot="members" slot-scope="data">
-          {{data.item.users.length}}
-        </template>
-        <template slot="updated_at" slot-scope="data">
-          {{data.item.updated_at | moment("from", "now")}}
-        </template>
-        <template slot="actions" slot-scope="data">
-          <b-btn variant="primary" :to="'publicities/'+data.item.id+'/edit'">
-            Editar
-          </b-btn>
-          &nbsp;
-          <b-btn variant="outline-secondary" @click="id = data.item.id" v-b-modal.confirmDestroy>
-            Eliminar
-          </b-btn>
+        <template #cell(actions)="data">
+          <b-button-group>
+            <b-button variant="info" @click="$router.push(`/publicities/${data.item.id}/edit`)" >Editar</b-button>
+            <b-button variant="warning" @click="id = data.item.id" v-b-modal.confirmDestroy>Eliminar</b-button>
+          </b-button-group>
         </template>
       </b-table>
       <b-modal id="confirmDestroy" title="Confirme la eliminación" @ok="destroy">
@@ -50,24 +41,34 @@
         id: 0,
         fields: [
           {
-            key: 'make',
-            label: 'Manufacturado por',
+            key: 'nombre',
+            label: 'Nombre',
             sortable: true,
           },
           {
-            key: 'model',
-            label: 'Modelo',
+            key: 'textoCorto',
+            label: 'Asunto',
             sortable: true,
           },
           {
-            key: 'year',
-            label: 'Año',
+            key: 'textoLargo',
+            label: 'Descripción',
             sortable: true,
           },
           {
-            key: 'updated_at',
+            key: 'alcance',
+            label: 'Alcance',
             sortable: true,
-            label: 'Última actualización'
+          },
+          {
+            key: 'categoriaId',
+            label: 'categoriaId',
+            sortable: true,
+          },
+          {
+            key: 'clienteId',
+            label: 'clienteId',
+            sortable: true,
           },
           {
             key: 'actions',

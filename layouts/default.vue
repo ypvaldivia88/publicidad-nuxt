@@ -31,7 +31,6 @@
               <b-nav-item class="text-white" :to="'/categories'">Categorías</b-nav-item>
               <b-nav-item class="text-white" :to="'/clients'">Clientes</b-nav-item>
               <b-nav-item class="text-white" :to="'/publicities'">Publicidades</b-nav-item>
-              <b-nav-item class="text-white" :to="'/admin'" v-if="admin">Administrar</b-nav-item>
             </b-navbar-nav>
             <b-navbar-nav class="ml-auto">
               <b-nav-item class="text-white" :to="'login'" v-if="!$auth.loggedIn">Acceder</b-nav-item>
@@ -50,7 +49,8 @@
   export default {
     methods: {
       logout() {
-        this.$auth.logout()
+        this.$auth.logout() 
+        this.$router.push('/login')
       },
       admin() {
         return this.$auth.loggedIn && this.$auth.user.admin

@@ -29,6 +29,7 @@ export const actions = {
     await this.$axios.get(`/publicidades`).then(res => {
       if (res.status === 200) {
         commit("set", res.data);
+        console.log(res.data);
       }
     });
   },
@@ -49,10 +50,14 @@ export const actions = {
     await commit("add", publicity);
   },
   create({ commit }, params) {
-    return this.$axios.post(`/publicidades`, { publicity: params });
+    return this.$axios.post(`/publicidades`, {
+      publicity: params
+    });
   },
   update({ commit }, params) {
-    return this.$axios.put(`/publicidades/${params.id}`, { publicity: params });
+    return this.$axios.put(`/publicidades/${params.id}`, {
+      publicity: params
+    });
   },
   delete({ commit }, params) {
     return this.$axios.delete(`/publicidades/${params.id}`);

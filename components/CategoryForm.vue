@@ -7,22 +7,21 @@
           </b-link>
         </b-col>
       </b-row>
-      <b-form-group label="Manufacturado por">
+      <b-form-group label="Nombre">
         <b-form-input id="categoryMakeInput"
-                      name="category[make]"
-                      ref="make"
-                      :state="validateState('make')"
+                      name="category[nombre]"
+                      ref="nombre"
+                      :state="validateState('nombre')"
                       type="text"
                       v-validate="{required: true}"
                       data-vv-delay="500"
-                      placeholder="Manufacturado por"
-                      @input="mergeCategory({'make': $event})"
-                      :value="category.make"></b-form-input>
+                      placeholder="Nombre"
+                      @input="mergeCategory({'nombre': $event})"
+                      :value="category.nombre"></b-form-input>
         <b-form-invalid-feedback>Este campo es requerido</b-form-invalid-feedback>
       </b-form-group>
       <b-btn class="my-3" type="submit">{{isUpdate() ? 'Actualizar' : 'Salvar'}}</b-btn>
-      <hr/>
-      <small><b-badge>Important</b-badge> This is a fake server and won't actually update the record.</small>
+     
     </b-form>
 </template>
 
