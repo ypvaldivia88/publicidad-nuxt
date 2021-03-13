@@ -8,7 +8,7 @@ export const actions = {
         data: { email, password }
       });
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   },
   async logout() {

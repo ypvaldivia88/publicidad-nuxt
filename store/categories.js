@@ -50,12 +50,12 @@ export const actions = {
   },
   create({ commit }, params) {
     return this.$axios.post(`/categorias`, {
-      category: params
+      nombre: params.nombre
     });
   },
   update({ commit }, params) {
     return this.$axios.put(`/categorias/${params.id}`, {
-      category: params
+      nombre: params.nombre
     });
   },
   delete({ commit }, params) {

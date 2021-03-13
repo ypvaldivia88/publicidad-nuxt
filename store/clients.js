@@ -50,12 +50,22 @@ export const actions = {
   },
   create({ commit }, params) {
     return this.$axios.post(`/clientes`, {
-      client: params
+      nombre: params.nombre,
+      telefono: params.telefono,
+      correo: params.correo,
+      contrato: params.contrato,
+      direccion: params.direccion,
+      persona: params.persona || false
     });
   },
   update({ commit }, params) {
     return this.$axios.put(`/clientes/${params.id}`, {
-      client: params
+      nombre: params.nombre,
+      telefono: params.telefono,
+      correo: params.correo,
+      contrato: params.contrato,
+      direccion: params.direccion,
+      persona: params.persona || false
     });
   },
   delete({ commit }, params) {
