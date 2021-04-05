@@ -3,7 +3,7 @@
     <b-row align-h="end">
       <b-col class="text-right">
         <b-link :to="'/clients'">
-          Regresar
+          Listado de Clientes
         </b-link>
       </b-col>
     </b-row>
@@ -135,7 +135,7 @@ export default {
                   ? "Actualizado"
                   : "creado";
               vm.$notify({ text: msg, type: "success", group: "alerts" });
-              vm.$router.push("/clients");
+              // vm.$router.push("/clients");
             })
             .catch(resp => {
               vm.$notify({
