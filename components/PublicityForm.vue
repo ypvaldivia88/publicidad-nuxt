@@ -104,12 +104,16 @@ export default {
     ...mapState("publicities", ["publicity"]),
     ...mapState({
       categories: state => {
-        return state.categories.list;
+        return state.categories.list.map(category => {
+          return { text: category.nombre, value: category.id };
+        });
       }
     }),
     ...mapState({
       clients: state => {
-        return state.clients.list;
+        return state.clients.list.map(client => {
+          return { text: client.nombre, value: client.id };
+        });
       }
     })
   },
@@ -124,7 +128,13 @@ export default {
       this.$validator.validateAll().then(result => {
         if (result) {
           this.$store
-            .dispatch(action, this.publicity)
+            .dispatch(action, {
+              ...this.publicity,
+              ...{
+                categoriaId: publicity.categoriaId,
+                clienteId: publicity.clienteId
+              }
+            })
             .then(resp => {
               let msg =
                 resp.data.name + " " + this.isUpdate()
