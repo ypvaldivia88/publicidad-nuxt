@@ -17,6 +17,7 @@ export const mutations = {
     state.list = state.list.filter(c => publicity.id !== c.id);
   },
   mergePublicities(state, form) {
+    // console.log(form);
     assign(state.publicity, form);
   },
   setPublicities(state, form) {
@@ -50,13 +51,24 @@ export const actions = {
     await commit("add", publicity);
   },
   create({ commit }, params) {
+    // return console.log(params);
     return this.$axios.post(`/publicidades`, {
-      publicity: params
+      nombre: params.nombre,
+      textoCorto: params.textoCorto,
+      textoLargo: params.textoLargo,
+      alcance: params.alcance,
+      categoriaId: params.categoriaId,
+      clienteId: params.clienteId
     });
   },
   update({ commit }, params) {
     return this.$axios.put(`/publicidades/${params.id}`, {
-      publicity: params
+      nombre: params.nombre,
+      textoCorto: params.textoCorto,
+      textoLargo: params.textoLargo,
+      alcance: params.alcance,
+      categoriaId: params.categoriaId,
+      clienteId: params.clienteId
     });
   },
   delete({ commit }, params) {
