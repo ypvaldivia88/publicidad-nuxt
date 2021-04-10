@@ -53,7 +53,7 @@
       ></b-form-input>
       <b-form-invalid-feedback>Este campo es requerido</b-form-invalid-feedback>
     </b-form-group>
-    <b-form-group label="Alcance" v-slot="{ alcances }">
+    <b-form-group label="Alcance" v-slot="{ alcance }">
       <b-form-radio-group
         id="alcance"
         name="publicity[alcance]"
@@ -61,7 +61,7 @@
         @change="mergePublicity({ alcance: $event })"
         :value="publicity.alcance"
         :options="options"
-        :aria-describedby="alcances"
+        :aria-describedby="alcance"
         button-variant="outline-primary"
         buttons
       ></b-form-radio-group>
@@ -137,7 +137,7 @@ export default {
             .dispatch(action, {
               ...vm.publicity,
               ...{
-                alcance: vm.alcance,
+                alcance: vm.publicity.alcance,
                 categoriaId: vm.publicity.categoriaId,
                 clienteId: vm.publicity.clienteId
               }
