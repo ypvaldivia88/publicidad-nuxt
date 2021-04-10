@@ -11,7 +11,7 @@
         finishButtonText="Finalizar"
         stepSize="lg"
       >
-        <tab-content title="Cliente" icon="ti-person">
+        <tab-content title="Cliente">
           <b-form-select
             v-if="!toggleForm"
             v-model="cliente"
@@ -33,7 +33,7 @@
           <client-form v-if="toggleForm"></client-form>
         </tab-content>
 
-        <tab-content title="Categoría" icon="ti-settings">
+        <tab-content title="Categoría">
           <b-form-select
             v-if="!toggleForm"
             v-model="categoria"
@@ -54,7 +54,7 @@
           </b-btn>
           <category-form v-if="toggleForm"></category-form>
         </tab-content>
-        <tab-content title="Publicidad" icon="ti-check">
+        <tab-content title="Publicidad">
           <b-form-select
             v-if="!toggleForm"
             v-model="publicidad"
