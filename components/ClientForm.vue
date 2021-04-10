@@ -3,7 +3,7 @@
     <b-row align-h="end">
       <b-col class="text-right">
         <b-link :to="'/clients'">
-          Listado de Clientes
+          Regresar
         </b-link>
       </b-col>
     </b-row>

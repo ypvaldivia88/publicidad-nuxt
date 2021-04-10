@@ -106,6 +106,10 @@ export default {
       ]
     };
   },
+  created() {
+    this.$store.dispatch("categories/get");
+    this.$store.dispatch("clients/get");
+  },
   computed: {
     ...mapState("publicities", ["publicity"]),
     ...mapState({
@@ -113,9 +117,7 @@ export default {
         return state.categories.list.map(category => {
           return { text: category.nombre, value: category.id };
         });
-      }
-    }),
-    ...mapState({
+      },
       clients: state => {
         return state.clients.list.map(client => {
           return { text: client.nombre, value: client.id };
@@ -156,7 +158,6 @@ export default {
               });
             });
         } else {
-          console.log(vm.$validator);
           vm.$notify({
             text: "Por favor solucione los errores en el formulario.",
             type: "warning",

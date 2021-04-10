@@ -1,7 +1,9 @@
 {
-	"users": [
-		{
-			"id": 1, "first_name": "Tom", "last_name": "Morello", "full_name": "Tom Morello", "email": "tom@example.com", "password": "test1234"
-		}
-	]
+  "users": [
+    {
+      "id": 1,
+      "email": "osmel.nodal@jovenclub.cu",
+      "password": "Osmel123."
+    }
+  ]
 }

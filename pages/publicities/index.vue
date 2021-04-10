@@ -12,12 +12,11 @@
         </template>
         <template #cell(actions)="data">
           <b-button-group>
-            <b-button
-              variant="primary"
-              class="mb-2"
-              @click="$router.push(`/publicities/${data.item.id}/edit`)"
-              ><b-icon icon="pencil-square" aria-label="Edit"></b-icon
-            ></b-button>
+            <NuxtLink :to="`/publicities/${data.item.id}/edit`">
+              <b-button variant="primary" class="mb-2"
+                ><b-icon icon="pencil-square" aria-label="Edit"></b-icon
+              ></b-button>
+            </NuxtLink>
             <b-button
               variant="danger"
               class="mb-2"
@@ -104,7 +103,8 @@ export default {
     destroy() {
       this.$store
         .dispatch("publicities/delete", { id: this.id })
-        .then(() => this.$store.dispatch("publicities/get"));
+        .then(() => this.$store.dispatch("publicities/get"))
+        .catch(error => console.log(error));
     }
   }
 };
