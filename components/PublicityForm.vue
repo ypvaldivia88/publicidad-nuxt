@@ -12,7 +12,7 @@
         id="publicityNombreInput"
         name="publicity[nombre]"
         ref="nombre"
-        :state="validateState('nombre')"
+        :state="validateState('publicity[nombre]')"
         type="text"
         v-validate="{ required: true }"
         data-vv-delay="500"
@@ -27,7 +27,7 @@
         id="publicityAsuntoInput"
         name="publicity[textoCorto]"
         ref="textoCorto"
-        :state="validateState('textoCorto')"
+        :state="validateState('publicity[textoCorto]')"
         type="text"
         v-validate="{ required: true }"
         data-vv-delay="500"
@@ -40,10 +40,10 @@
       > </b-form-group
     ><b-form-group label="Descripción">
       <b-form-input
-        id="publicityDescripciónInput"
+        id="publicityDescripcionInput"
         name="publicity[textoLargo]"
         ref="textoLargo"
-        :state="validateState('textoLargo')"
+        :state="validateState('publicity[textoLargo]')"
         type="text"
         v-validate="{ required: true }"
         data-vv-delay="500"
@@ -55,17 +55,21 @@
     </b-form-group>
     <b-form-group label="Alcance" v-slot="{ alcance }">
       <b-form-radio-group
-        id="btn-radios-2"
+        id="alcance"
+        name="publicity[alcance]"
+        ref="alcance"
+        @change="mergePublicity({ alcance: $event })"
         :value="publicity.alcance"
         :options="options"
         :aria-describedby="alcance"
         button-variant="outline-primary"
-        name="radio-btn-outline"
         buttons
       ></b-form-radio-group>
     </b-form-group>
     <b-form-group label="Categorías" v-slot="{ categorias }">
       <b-form-select
+        ref="categoriaId"
+        @change="mergePublicity({ categoriaId: $event })"
         :value="publicity.categoriaId"
         :options="categories"
         :aria-describedby="categorias"
@@ -73,6 +77,8 @@
     </b-form-group>
     <b-form-group label="Clientes" v-slot="{ clientes }">
       <b-form-select
+        ref="clienteId"
+        @change="mergePublicity({ clienteId: $event })"
         :value="publicity.clienteId"
         :options="clients"
         :aria-describedby="clientes"
@@ -124,22 +130,21 @@ export default {
     },
     submit() {
       let vm = this;
-      let action = "publicities/" + (this.isUpdate() ? "update" : "create");
-      this.$validator.validateAll().then(result => {
+      let action = "publicities/" + (vm.isUpdate() ? "update" : "create");
+      vm.$validator.validateAll().then(result => {
         if (result) {
-          this.$store
+          vm.$store
             .dispatch(action, {
-              ...this.publicity,
+              ...vm.publicity,
               ...{
-                categoriaId: publicity.categoriaId,
-                clienteId: publicity.clienteId
+                alcance: vm.publicity.alcance,
+                categoriaId: vm.publicity.categoriaId,
+                clienteId: vm.publicity.clienteId
               }
             })
             .then(resp => {
               let msg =
-                resp.data.name + " " + this.isUpdate()
-                  ? "Actualizado"
-                  : "creado";
+                resp.data.name + " " + vm.isUpdate() ? "Actualizado" : "creado";
               vm.$notify({ text: msg, type: "success", group: "alerts" });
               vm.$router.push("/publicities");
             })
@@ -151,6 +156,7 @@ export default {
               });
             });
         } else {
+          console.log(vm.$validator);
           vm.$notify({
             text: "Por favor solucione los errores en el formulario.",
             type: "warning",

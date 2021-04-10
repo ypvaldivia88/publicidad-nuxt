@@ -12,7 +12,7 @@
         id="clientNombreInput"
         name="client[nombre]"
         ref="nombre"
-        :state="validateState('nombre')"
+        :state="validateState('client[nombre]')"
         type="text"
         v-validate="{ required: true }"
         data-vv-delay="500"
@@ -27,7 +27,7 @@
         id="clientTelefonoInput"
         name="client[telefono]"
         ref="telefono"
-        :state="validateState('telefono')"
+        :state="validateState('client[telefono]')"
         type="number"
         v-validate="{ required: true }"
         data-vv-delay="500"
@@ -42,7 +42,7 @@
         id="clientCorreoInput"
         name="client[correo]"
         ref="correo"
-        :state="validateState('correo')"
+        :state="validateState('client[correo]')"
         type="email"
         v-validate="{ required: true }"
         data-vv-delay="500"
@@ -57,7 +57,7 @@
         id="clientContratoInput"
         name="client[contrato]"
         ref="contrato"
-        :state="validateState('contrato')"
+        :state="validateState('client[contrato]')"
         type="text"
         v-validate="{ required: true }"
         data-vv-delay="500"
@@ -72,7 +72,7 @@
         id="clientDireccionInput"
         name="client[direccion]"
         ref="direccion"
-        :state="validateState('direccion')"
+        :state="validateState('client[direccion]')"
         type="text"
         v-validate="{ required: true }"
         data-vv-delay="500"
@@ -135,7 +135,7 @@ export default {
                   ? "Actualizado"
                   : "creado";
               vm.$notify({ text: msg, type: "success", group: "alerts" });
-              // vm.$router.push("/clients");
+              vm.$router.push("/clients");
             })
             .catch(resp => {
               vm.$notify({

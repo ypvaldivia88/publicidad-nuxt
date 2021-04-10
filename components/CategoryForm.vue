@@ -12,7 +12,7 @@
         id="categoryMakeInput"
         name="category[nombre]"
         ref="nombre"
-        :state="validateState('nombre')"
+        :state="validateState('category[nombre]')"
         type="text"
         v-validate="{ required: true }"
         data-vv-delay="500"
