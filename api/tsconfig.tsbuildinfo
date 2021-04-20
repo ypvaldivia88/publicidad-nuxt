@@ -2182,8 +2182,8 @@
         "affectsGlobalScope": false
       },
       "./src/controllers/categoria-publicidad.controller.ts": {
-        "version": "9183ee05440bb79d9297d0b64d884370a666c714017ecd171f75cb0963a662bb",
-        "signature": "468e950ee6afebd7b7a7a583318000051127b8a3358161661a392e984737710f",
+        "version": "f4e614092bdd38550324880c1cfcf64fa807c3d5cc8c1f72736a55083c0db00b",
+        "signature": "16f87115c83d3acf092cebb0b912d4fdcdef1375da2722adfb148de05467482d",
         "affectsGlobalScope": false
       },
       "./src/controllers/cliente-publicidad.controller.ts": {
@@ -2276,9 +2276,14 @@
         "signature": "4e82d02243b4f0e31d7b8fa78dee9bb61f8257172d27cbca283df6de5e099bae",
         "affectsGlobalScope": false
       },
+      "./src/controllers/publicidad.controller.ts": {
+        "version": "3e617de2221466367c273038db79bec3a6a0b6fce14647f7314204a92a6f91bd",
+        "signature": "1744823591202fff6beecf65f3b3f19e9f0bccdfc68b9f47180e2687e3675b99",
+        "affectsGlobalScope": false
+      },
       "./src/controllers/index.ts": {
-        "version": "7d615c938df7d0af165c564df0bcedca502aee5443ad633e6a0f4c054b2d4d83",
-        "signature": "2aae0a68356a4face08a649ac926639d3e3fa770d864a350a14715a84faf3b76",
+        "version": "a60f6f4d5cc5f0c1936a178311810347db977093dd622cafa0a215a0dc0a66b4",
+        "signature": "7659293852dff5772ca9b79066ce2894e9f022ced5fb6d6147cfb49b960129f4",
         "affectsGlobalScope": false
       },
       "./src/controllers/user-role.controller.ts": {
@@ -4451,6 +4456,7 @@
         "./src/controllers/categoria-publicidad.controller.ts",
         "./src/controllers/cliente-publicidad.controller.ts",
         "./src/controllers/permission.controller.ts",
+        "./src/controllers/publicidad.controller.ts",
         "./src/controllers/role.controller.ts",
         "./src/controllers/user.controller.ts"
       ],
@@ -4460,6 +4466,13 @@
         "./node_modules/tslib/tslib.d.ts",
         "./src/authorization/permission-keys.ts",
         "./src/keys.ts"
+      ],
+      "./src/controllers/publicidad.controller.ts": [
+        "./node_modules/@loopback/repository/dist/index.d.ts",
+        "./node_modules/@loopback/rest/dist/index.d.ts",
+        "./node_modules/tslib/tslib.d.ts",
+        "./src/models/index.ts",
+        "./src/repositories/index.ts"
       ],
       "./src/controllers/role.controller.ts": [
         "./node_modules/@loopback/authentication/dist/index.d.ts",
@@ -6713,8 +6726,14 @@
         "./src/controllers/categoria-publicidad.controller.ts",
         "./src/controllers/cliente-publicidad.controller.ts",
         "./src/controllers/permission.controller.ts",
+        "./src/controllers/publicidad.controller.ts",
         "./src/controllers/role.controller.ts",
         "./src/controllers/user.controller.ts"
+      ],
+      "./src/controllers/publicidad.controller.ts": [
+        "./node_modules/@loopback/repository/dist/index.d.ts",
+        "./src/models/index.ts",
+        "./src/repositories/index.ts"
       ],
       "./src/controllers/role.controller.ts": [
         "./node_modules/@loopback/repository/dist/index.d.ts",
@@ -7400,6 +7419,7 @@
       "./src/controllers/cliente-publicidad.controller.ts",
       "./src/controllers/index.ts",
       "./src/controllers/permission.controller.ts",
+      "./src/controllers/publicidad.controller.ts",
       "./src/controllers/role.controller.ts",
       "./src/controllers/user-role.controller.ts",
       "./src/controllers/user.controller.ts",
