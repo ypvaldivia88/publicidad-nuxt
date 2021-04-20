@@ -40,6 +40,7 @@ export const actions = {
     });
   },
   async random({ commit }, params) {
+    commit("mergePublicities", []);
     await this.$axios
       .get(`/categorias/${params.category_id}/random/publicity`)
       .then(res => {
