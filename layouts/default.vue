@@ -42,6 +42,9 @@
               <b-nav-item class="text-white" :to="'/publicities'"
                 >Publicidades</b-nav-item
               >
+              <b-nav-item class="text-white" :to="'/publicities/random'"
+                >Random</b-nav-item
+              >
             </b-navbar-nav>
             <b-navbar-nav class="ml-auto">
               <b-nav-item

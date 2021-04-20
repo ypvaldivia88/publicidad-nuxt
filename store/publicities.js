@@ -17,7 +17,6 @@ export const mutations = {
     state.list = state.list.filter(c => publicity.id !== c.id);
   },
   mergePublicities(state, form) {
-    // console.log(form);
     assign(state.publicity, form);
   },
   setPublicities(state, form) {
@@ -30,7 +29,6 @@ export const actions = {
     await this.$axios.get(`/publicidades`).then(res => {
       if (res.status === 200) {
         commit("set", res.data);
-        console.log(res.data);
       }
     });
   },
@@ -40,6 +38,16 @@ export const actions = {
         commit("mergePublicities", res.data);
       }
     });
+  },
+  async random({ commit }, params) {
+    commit("mergePublicities", []);
+    await this.$axios
+      .get(`/categorias/${params.category_id}/random/publicity`)
+      .then(res => {
+        if (res.status === 200) {
+          commit("mergePublicities", res.data);
+        }
+      });
   },
   async set({ commit }, publicities) {
     await commit("set", publicities);

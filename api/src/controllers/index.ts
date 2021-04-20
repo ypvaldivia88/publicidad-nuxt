@@ -4,3 +4,4 @@ export * from './role.controller';
 export * from './user.controller';
 export * from './categoria-publicidad.controller';
 export * from './cliente-publicidad.controller';
+export * from './publicidad.controller';

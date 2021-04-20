@@ -4,6 +4,9 @@
       <b-btn variant="outline-success" class="mb-3" :to="'/publicities/new'">
         Nueva Publicidad
       </b-btn>
+      <b-btn variant="outline-success" class="mb-3" :to="'/publicities/random'">
+        Publicidad aleatoria
+      </b-btn>
       <b-table striped hover :items="list" :fields="fields">
         <template #cell(nombre)="data">
           <NuxtLink :to="`/publicities/${data.item.id}/edit`">{{
