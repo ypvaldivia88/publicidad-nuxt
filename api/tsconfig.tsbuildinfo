@@ -2182,7 +2182,7 @@
         "affectsGlobalScope": false
       },
       "./src/controllers/categoria-publicidad.controller.ts": {
-        "version": "f4e614092bdd38550324880c1cfcf64fa807c3d5cc8c1f72736a55083c0db00b",
+        "version": "69ca3da242b64d1bb5331e58db10e91ba9029b031b02a858a8bb7217b758492f",
         "signature": "16f87115c83d3acf092cebb0b912d4fdcdef1375da2722adfb148de05467482d",
         "affectsGlobalScope": false
       },
