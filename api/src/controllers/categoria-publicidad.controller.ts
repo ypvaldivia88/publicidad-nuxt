@@ -60,7 +60,6 @@ export class CategoriaPublicidadController {
       .publicidades(id)
       .find({ skip: 0, limit: 1000 });
 
-    console.log(anuncios);
     const skip = Math.floor(Math.random() * anuncios.length);
 
     return await this.categoriaRepository
