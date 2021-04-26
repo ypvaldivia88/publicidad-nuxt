@@ -26,18 +26,24 @@ export const mutations = {
 
 export const actions = {
   async get({ commit }) {
-    await this.$axios.get(`/publicidades`).then(res => {
-      if (res.status === 200) {
-        commit("set", res.data);
-      }
-    });
+    await this.$axios
+      .get(`/publicidades`)
+      .then(res => {
+        if (res.status === 200) {
+          commit("set", res.data);
+        }
+      })
+      .catch(err => console.log(err.message));
   },
-  async show({ commit }, params) {
-    await this.$axios.get(`/publicidades/${params.publicity_id}`).then(res => {
-      if (res.status === 200) {
-        commit("mergePublicities", res.data);
-      }
-    });
+  async show({ commit }, { publicity_id }) {
+    await this.$axios
+      .get(`/publicidades/${publicity_id}`)
+      .then(res => {
+        if (res.status === 200) {
+          commit("mergePublicities", res.data);
+        }
+      })
+      .catch(err => console.log(err.message));
   },
   async random({ commit }, params) {
     commit("mergePublicities", []);
@@ -47,7 +53,8 @@ export const actions = {
         if (res.status === 200) {
           commit("mergePublicities", res.data);
         }
-      });
+      })
+      .catch(err => console.log(err.message));
   },
   async set({ commit }, publicities) {
     await commit("set", publicities);

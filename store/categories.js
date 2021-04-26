@@ -26,18 +26,24 @@ export const mutations = {
 
 export const actions = {
   async get({ commit }) {
-    await this.$axios.get(`/categorias`).then(res => {
-      if (res.status === 200) {
-        commit("set", res.data);
-      }
-    });
+    await this.$axios
+      .get(`/categorias`)
+      .then(res => {
+        if (res.status === 200) {
+          commit("set", res.data);
+        }
+      })
+      .catch(err => console.log(err.message));
   },
   async show({ commit }, params) {
-    await this.$axios.get(`/categorias/${params.category_id}`).then(res => {
-      if (res.status === 200) {
-        commit("mergeCategories", res.data);
-      }
-    });
+    await this.$axios
+      .get(`/categorias/${params.category_id}`)
+      .then(res => {
+        if (res.status === 200) {
+          commit("mergeCategories", res.data);
+        }
+      })
+      .catch(err => console.log(err.message));
   },
   async set({ commit }, categories) {
     await commit("set", categories);
