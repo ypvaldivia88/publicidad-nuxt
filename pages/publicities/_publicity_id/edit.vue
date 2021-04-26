@@ -3,12 +3,14 @@
 </template>
 
 <script>
-  import PublicityForm from "~/components/PublicityForm";
-  export default {
-    name: "editPublicity",
-    components: {PublicityForm},
-    async fetch({store, params}) {
-      await store.dispatch('publicity/show', {publicity_id: params.publicity_id});
-    }
+import PublicityForm from "~/components/PublicityForm";
+export default {
+  name: "editPublicity",
+  components: { PublicityForm },
+  async fetch({ store, params }) {
+    await store.dispatch("publicities/show", {
+      publicity_id: params.publicity_id
+    });
   }
+};
 </script>

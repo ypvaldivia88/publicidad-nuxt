@@ -9,17 +9,18 @@
       </b-btn>
       <b-table striped hover :items="list" :fields="fields">
         <template #cell(nombre)="data">
-          <NuxtLink :to="`/publicities/${data.item.id}/edit`">{{
+          <NuxtLink :to="`/publicities/${data.item.id}`">{{
             data.item.nombre
           }}</NuxtLink>
         </template>
         <template #cell(actions)="data">
           <b-button-group>
-            <NuxtLink :to="`/publicities/${data.item.id}/edit`">
-              <b-button variant="primary" class="mb-2"
-                ><b-icon icon="pencil-square" aria-label="Edit"></b-icon
-              ></b-button>
-            </NuxtLink>
+            <b-button
+              variant="primary"
+              class="mb-2"
+              @click="$router.push(`/publicities/${data.item.id}/edit`)"
+              ><b-icon icon="pencil-square" aria-label="Edit"></b-icon
+            ></b-button>
             <b-button
               variant="danger"
               class="mb-2"

@@ -33,7 +33,7 @@ export const actions = {
     });
   },
   async show({ commit }, params) {
-    await this.$axios.get(`/clientes/${params.id}`).then(res => {
+    await this.$axios.get(`/clientes/${params.client_id}`).then(res => {
       if (res.status === 200) {
         commit("mergeClients", res.data);
       }

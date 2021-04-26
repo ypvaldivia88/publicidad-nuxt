@@ -6,7 +6,7 @@
       </b-btn>
       <b-table striped hover :items="list" :fields="fields">
         <template #cell(nombre)="data">
-          <NuxtLink :to="`/categories/${data.item.id}/edit`">{{
+          <NuxtLink :to="`/categories/${data.item.id}`">{{
             data.item.nombre
           }}</NuxtLink>
         </template>

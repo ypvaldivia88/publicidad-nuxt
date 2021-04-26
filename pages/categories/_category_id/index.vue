@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{ $store.state.categories.category.nombre }}</h3>
+    <h3>{{ $store.state.categories.category }}</h3>
   </div>
 </template>
 
@@ -9,7 +9,9 @@ export default {
   name: "showCategory",
   async fetch({ store, params }) {
     console.log(params);
-    await store.dispatch("category/show", { category_id: params.category_id });
+    await store.dispatch("categories/show", {
+      category_id: params.category_id
+    });
   }
 };
 </script>

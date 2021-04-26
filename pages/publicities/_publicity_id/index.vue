@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{ $store.state.publicities.publicity.nombre }}</h3>
+    <h3>{{ $store.state.publicities.publicity }}</h3>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: "showPublicity",
   async fetch({ store, params }) {
-    await store.dispatch("publicity/show", {
+    await store.dispatch("publicities/show", {
       publicity_id: params.publicity_id
     });
   }

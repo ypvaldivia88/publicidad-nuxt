@@ -33,7 +33,7 @@ export const actions = {
     });
   },
   async show({ commit }, params) {
-    await this.$axios.get(`/categorias/${params.id}`).then(res => {
+    await this.$axios.get(`/categorias/${params.category_id}`).then(res => {
       if (res.status === 200) {
         commit("mergeCategories", res.data);
       }
