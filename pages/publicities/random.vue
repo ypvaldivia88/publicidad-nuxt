@@ -1,17 +1,14 @@
 <template>
   <div>
     <b-nav-form class="pl-3">
-      <b-form-select
-        v-model="categoria"
-        :options="categorias"
-        @change="random()"
+      <b-form-select v-model="categoria" :options="categorias" @change="random"
         ><template #first>
           <b-form-select-option value="" disabled
             >-- Seleccione una categoria --</b-form-select-option
           >
         </template></b-form-select
       >
-      <b-button size="md" class="ml-2" @click="random()">Recargar</b-button>
+      <b-button size="md" class="ml-2" @click="random">Recargar</b-button>
     </b-nav-form>
 
     <!-- {{ publicidad[0] }} -->
@@ -45,6 +42,8 @@
         <b-badge variant="primary" pill>{{ publicidad[0].alcance }}</b-badge>
       </b-list-group-item>
     </b-list-group>
+
+    <vue-friendly-iframe :src="publicityFrame.src"> </vue-friendly-iframe>
   </div>
 </template>
 
@@ -70,14 +69,15 @@ export default {
   },
   data: function() {
     return {
-      categoria: null
+      categoria: null,
+      publicityFrame: { src: "/iframe.html" }
     };
   },
   methods: {
     random() {
-      this.$store
-        .dispatch("publicities/random", { category_id: this.categoria })
-        .catch(error => console.log(error));
+      this.$store.dispatch("publicities/random", {
+        category_id: this.categoria
+      });
     }
   }
 };

@@ -50,7 +50,8 @@ module.exports = {
     { src: "~/plugins/vue-notifications", ssr: false },
     { src: "~/plugins/vee-validate" },
     { src: "~/plugins/vue-moment" },
-    { src: "~/plugins/vue-form-wizzard" }
+    { src: "~/plugins/vue-form-wizzard" },
+    { src: "~/plugins/vue-friendly-iframe" }
   ],
   router: {
     middleware: ["auth"]

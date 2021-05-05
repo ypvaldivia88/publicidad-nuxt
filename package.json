@@ -41,6 +41,7 @@
     "postcss-preset-env": "^5.1.0",
     "pug": "2.0.3",
     "pug-plain-loader": "^1.0.0",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "vue-friendly-iframe": "^0.20.0"
   }
 }

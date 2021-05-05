@@ -45,11 +45,11 @@ export const actions = {
       })
       .catch(err => console.log(err.message));
   },
-  async random({ commit }, params) {
-    commit("mergePublicities", []);
-    await this.$axios
+  random({ commit }, params) {
+    this.$axios
       .get(`/categorias/${params.category_id}/random/publicity`)
       .then(res => {
+        console.log(res.data);
         if (res.status === 200) {
           commit("mergePublicities", res.data);
         }
