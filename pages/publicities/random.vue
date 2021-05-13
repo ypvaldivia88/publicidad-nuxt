@@ -43,17 +43,24 @@
       </b-list-group-item>
     </b-list-group>
 
-    <vue-friendly-iframe :src="publicityFrame.src"> </vue-friendly-iframe>
+    <iframe :src="publicityFrame.src" v-on:load="onLoadIframe" name="myIframe">
+    </iframe>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
+import _ from "lodash";
+
+function findIframeByName(name) {
+  return _.find(window.frames, frame => frame.name === name);
+}
 
 export default {
   async fetch({ store }) {
     await store.dispatch("categories/get");
   },
+  beforeMount() {},
   computed: {
     ...mapState({
       categorias: state => {
@@ -78,6 +85,10 @@ export default {
       this.$store.dispatch("publicities/random", {
         category_id: this.categoria
       });
+    },
+    onLoadIframe(event) {
+      const iframe = findIframeByName(event.currentTarget.name);
+      iframe.doSomething(this.publicidad);
     }
   }
 };
