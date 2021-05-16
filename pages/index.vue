@@ -135,9 +135,10 @@ export default {
         group: "alerts"
       });
     }
-  }
+  }//blabla
 };
 </script>
+
 
 <style>
 .container {
