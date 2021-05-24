@@ -11,35 +11,35 @@
       <b-button size="md" class="ml-2" @click="random">Recargar</b-button>
     </b-nav-form>
 
-    <!-- {{ publicidad[0] }} -->
+    <!-- {{ publicidad }} -->
 
-    <b-list-group v-if="publicidad[0]" class="p-3">
+    <b-list-group v-if="publicidad" class="p-3">
       <b-list-group-item
         class="d-flex justify-content-between align-items-center"
       >
         Nombre
-        <b-badge variant="primary" pill>{{ publicidad[0].nombre }}</b-badge>
+        <b-badge variant="primary" pill>{{ publicidad.nombre }}</b-badge>
       </b-list-group-item>
 
       <b-list-group-item
         class="d-flex justify-content-between align-items-center"
       >
         Asunto
-        <b-badge variant="primary" pill>{{ publicidad[0].textoCorto }}</b-badge>
+        <b-badge variant="primary" pill>{{ publicidad.textoCorto }}</b-badge>
       </b-list-group-item>
 
       <b-list-group-item
         class="d-flex justify-content-between align-items-center"
       >
         Descripción
-        <b-badge variant="primary" pill>{{ publicidad[0].textoLargo }}</b-badge>
+        <b-badge variant="primary" pill>{{ publicidad.textoLargo }}</b-badge>
       </b-list-group-item>
 
       <b-list-group-item
         class="d-flex justify-content-between align-items-center"
       >
         Alcance
-        <b-badge variant="primary" pill>{{ publicidad[0].alcance }}</b-badge>
+        <b-badge variant="primary" pill>{{ publicidad.alcance }}</b-badge>
       </b-list-group-item>
     </b-list-group>
 
@@ -68,23 +68,27 @@ export default {
           value: item.id,
           text: item.nombre
         }));
-      },
-      publicidad: state => {
-        return state.publicities.publicity;
       }
     })
   },
   data: function() {
     return {
       categoria: null,
+      publicidad: null,
       publicityFrame: { src: "/iframe.html" }
     };
   },
   methods: {
     random() {
-      this.$store.dispatch("publicities/random", {
-        category_id: this.categoria
-      });
+      this.$axios
+        .get(`/categorias/${this.categoria}/random/publicity`)
+        .then(res => {
+          console.log(res.data);
+          if (res.status === 200) {
+            this.publicidad = res.data[0];
+          } else this.publicidad = null;
+        })
+        .catch(err => console.log(err.message));
     },
     onLoadIframe(event) {
       const iframe = findIframeByName(event.currentTarget.name);
