@@ -15,7 +15,7 @@
 
     <div
       v-show="categoria && publicidad"
-      class="embed-responsive embed-responsive-16by9"
+      class="embed-responsive embed-responsive-16by9 mt-4"
     >
       <iframe
         class="embed-responsive-item"
@@ -67,6 +67,7 @@ export default {
         .then(res => {
           if (res.status === 200) {
             this.publicidad = res.data[0];
+            this.publicidad.fotoUrl = "https://source.unsplash.com/random";
             const iframe = findIframeByName("myIframe");
             iframe.loadData(this.publicidad);
           } else this.publicidad = null;
