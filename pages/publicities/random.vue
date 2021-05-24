@@ -13,38 +13,20 @@
 
     <!-- {{ publicidad }} -->
 
-    <b-list-group v-if="publicidad" class="p-3">
-      <b-list-group-item
-        class="d-flex justify-content-between align-items-center"
-      >
-        Nombre
-        <b-badge variant="primary" pill>{{ publicidad.nombre }}</b-badge>
-      </b-list-group-item>
-
-      <b-list-group-item
-        class="d-flex justify-content-between align-items-center"
-      >
-        Asunto
-        <b-badge variant="primary" pill>{{ publicidad.textoCorto }}</b-badge>
-      </b-list-group-item>
-
-      <b-list-group-item
-        class="d-flex justify-content-between align-items-center"
-      >
-        Descripción
-        <b-badge variant="primary" pill>{{ publicidad.textoLargo }}</b-badge>
-      </b-list-group-item>
-
-      <b-list-group-item
-        class="d-flex justify-content-between align-items-center"
-      >
-        Alcance
-        <b-badge variant="primary" pill>{{ publicidad.alcance }}</b-badge>
-      </b-list-group-item>
-    </b-list-group>
-
-    <iframe :src="publicityFrame.src" v-on:load="onLoadIframe" name="myIframe">
-    </iframe>
+    <div
+      v-show="categoria && publicidad"
+      class="embed-responsive embed-responsive-16by9"
+    >
+      <iframe
+        class="embed-responsive-item"
+        :src="publicityFrame.src"
+        name="myIframe"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <div v-show="categoria && !publicidad">
+      No se han encontrado publicidades para esta categoria
+    </div>
   </div>
 </template>
 
@@ -83,16 +65,13 @@ export default {
       this.$axios
         .get(`/categorias/${this.categoria}/random/publicity`)
         .then(res => {
-          console.log(res.data);
           if (res.status === 200) {
             this.publicidad = res.data[0];
+            const iframe = findIframeByName("myIframe");
+            iframe.loadData(this.publicidad);
           } else this.publicidad = null;
         })
         .catch(err => console.log(err.message));
-    },
-    onLoadIframe(event) {
-      const iframe = findIframeByName(event.currentTarget.name);
-      iframe.doSomething(this.publicidad);
     }
   }
 };

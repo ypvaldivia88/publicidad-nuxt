@@ -2,19 +2,22 @@
   <h1>Publicidad</h1>
 
   <dl>
-    <dt>HTML</dt>
-    <dd>is a markup language</dd>
-    <dt>Java</dt>
-    <dd>is a programming language and platform</dd>
-    <dt>JavaScript</dt>
-    <dd>is a scripting language</dd>
-    <dt>SQL</dt>
-    <dd>is a query language</dd>
+    <dt><b>Nombre</b></dt>
+    <dd id="nombre"></dd>
+    <dt><b>Asunto</b></dt>
+    <dd id="asunto"></dd>
+    <dt><b>Descripción</b></dt>
+    <dd id="descripcion"></dd>
+    <dt><b>Alcance</b></dt>
+    <dd id="alcance"></dd>
   </dl>
 
   <script type="text/javascript">
-    window.doSomething = function(parentData) {
-      console.info(parentData);
+    window.loadData = function(parentData) {
+      document.getElementById("nombre").innerHTML = parentData.nombre;
+      document.getElementById("asunto").innerHTML = parentData.textoCorto;
+      document.getElementById("descripcion").innerHTML = parentData.textoLargo;
+      document.getElementById("alcance").innerHTML = parentData.alcance;
     };
   </script>
 </body>
