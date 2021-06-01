@@ -11,40 +11,22 @@
       <b-button size="md" class="ml-2" @click="random">Recargar</b-button>
     </b-nav-form>
 
-    <!-- {{ publicidad[0] }} -->
+    <!-- {{ publicidad }} -->
 
-    <b-list-group v-if="publicidad[0]" class="p-3">
-      <b-list-group-item
-        class="d-flex justify-content-between align-items-center"
-      >
-        Nombre
-        <b-badge variant="primary" pill>{{ publicidad[0].nombre }}</b-badge>
-      </b-list-group-item>
-
-      <b-list-group-item
-        class="d-flex justify-content-between align-items-center"
-      >
-        Asunto
-        <b-badge variant="primary" pill>{{ publicidad[0].textoCorto }}</b-badge>
-      </b-list-group-item>
-
-      <b-list-group-item
-        class="d-flex justify-content-between align-items-center"
-      >
-        Descripción
-        <b-badge variant="primary" pill>{{ publicidad[0].textoLargo }}</b-badge>
-      </b-list-group-item>
-
-      <b-list-group-item
-        class="d-flex justify-content-between align-items-center"
-      >
-        Alcance
-        <b-badge variant="primary" pill>{{ publicidad[0].alcance }}</b-badge>
-      </b-list-group-item>
-    </b-list-group>
-
-    <iframe :src="publicityFrame.src" v-on:load="onLoadIframe" name="myIframe">
-    </iframe>
+    <div
+      v-show="categoria && publicidad"
+      class="embed-responsive embed-responsive-16by9 mt-4"
+    >
+      <iframe
+        class="embed-responsive-item"
+        :src="publicityFrame.src"
+        name="myIframe"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <div v-show="categoria && !publicidad">
+      No se han encontrado publicidades para esta categoria
+    </div>
   </div>
 </template>
 
@@ -68,27 +50,29 @@ export default {
           value: item.id,
           text: item.nombre
         }));
-      },
-      publicidad: state => {
-        return state.publicities.publicity;
       }
     })
   },
   data: function() {
     return {
       categoria: null,
+      publicidad: null,
       publicityFrame: { src: "/iframe.html" }
     };
   },
   methods: {
     random() {
-      this.$store.dispatch("publicities/random", {
-        category_id: this.categoria
-      });
-    },
-    onLoadIframe(event) {
-      const iframe = findIframeByName(event.currentTarget.name);
-      iframe.doSomething(this.publicidad);
+      this.$axios
+        .get(`/categorias/${this.categoria}/random/publicity`)
+        .then(res => {
+          if (res.status === 200) {
+            this.publicidad = res.data[0];
+            this.publicidad.fotoUrl = "https://source.unsplash.com/random";
+            const iframe = findIframeByName("myIframe");
+            iframe.loadData(this.publicidad);
+          } else this.publicidad = null;
+        })
+        .catch(err => console.log(err.message));
     }
   }
 };
