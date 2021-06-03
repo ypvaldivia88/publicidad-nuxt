@@ -6,7 +6,7 @@ npm-debug.log
 .nuxt
 
 # Nuxt generate
-dist
+
 
 # dependencies
 api/node_modules
