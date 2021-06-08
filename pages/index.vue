@@ -3,8 +3,8 @@
     <div>
       <form-wizard
         @on-complete="onComplete"
-        title="Formulario de Publicidad"
-        subtitle="complete los campos para crear una publicidad de forma sencilla"
+        title="Wizard de Anuncios"
+        subtitle="complete los campos para crear un anuncio de forma sencilla"
         color="CornflowerBlue"
         nextButtonText="Siguiente"
         backButtonText="Anterior"
@@ -54,7 +54,7 @@
           </b-btn>
           <category-form v-if="toggleForm"></category-form>
         </tab-content>
-        <tab-content title="Publicidad">
+        <tab-content title="Anuncio">
           <b-form-select
             v-if="!toggleForm"
             v-model="publicidad"

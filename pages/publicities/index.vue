@@ -2,10 +2,10 @@
   <b-row>
     <b-col>
       <b-btn variant="outline-success" class="mb-3" :to="'/publicities/new'">
-        Nueva Publicidad
+        Nuevo Anuncio
       </b-btn>
       <b-btn variant="outline-success" class="mb-3" :to="'/publicities/random'">
-        Publicidad aleatoria
+        Anuncio aleatorio
       </b-btn>
       <b-table striped hover :items="list" :fields="fields">
         <template #cell(nombre)="data">

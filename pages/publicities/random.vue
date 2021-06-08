@@ -25,7 +25,7 @@
       ></iframe>
     </div>
     <div v-show="categoria && !publicidad">
-      No se han encontrado publicidades para esta categoria
+      No se han encontrado anuncios para esta categoria
     </div>
   </div>
 </template>
