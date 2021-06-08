@@ -1,101 +1,163 @@
 <template>
-  <section>
-    <div>
-      <form-wizard
-        @on-complete="onComplete"
-        title="Wizard de Anuncios"
-        subtitle="complete los campos para crear un anuncio de forma sencilla"
-        color="CornflowerBlue"
-        nextButtonText="Siguiente"
-        backButtonText="Anterior"
-        finishButtonText="Finalizar"
-        stepSize="lg"
-      >
-        <tab-content title="Cliente">
-          <b-form-select
-            v-if="!toggleForm"
-            v-model="cliente"
-            :options="clientes"
-            ><template #first>
-              <b-form-select-option value="" disabled
-                >-- Seleccione un cliente --</b-form-select-option
+  <div>
+    <b-row>
+      <b-col md="8">
+        <b-form @submit.prevent="onSubmit" @reset="onReset" v-if="show">
+          <b-form-group id="input-group-00" label="Nombre" label-for="input-00">
+            <b-form-input
+              id="input-00"
+              v-model="form.nombre"
+              type="text"
+              placeholder="Entre un nombre para su anuncio"
+              size="sm"
+              required
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group id="input-group-0" label="Imagen" label-for="input-0">
+            <!-- Styled -->
+            <b-form-file
+              accept="image/*"
+              v-model="form.imagen"
+              placeholder="Elija una imagen..."
+              drop-placeholder="arrástrela aquí..."
+              size="sm"
+              @change="setImage"
+              required
+            ></b-form-file>
+          </b-form-group>
+
+          <b-form-group id="input-group-1" label="Título" label-for="input-1">
+            <b-form-input
+              id="input-1"
+              v-model="form.titulo"
+              type="text"
+              placeholder="Entre un título"
+              size="sm"
+              required
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group
+            id="input-group-2"
+            label="Descripción"
+            label-for="input-2"
+          >
+            <b-form-textarea
+              id="input-2"
+              v-model="form.descripcion"
+              placeholder="Entre la descripción de su anuncio"
+              size="sm"
+              rows="3"
+              required
+            ></b-form-textarea>
+          </b-form-group>
+
+          <b-row>
+            <b-col
+              ><b-form-group
+                id="input-group-3"
+                label="Cliente:"
+                label-for="input-3"
               >
-            </template></b-form-select
-          >
-
-          <b-btn
-            variant="outline-info"
-            class="mt-3"
-            @click="toggleForm = !toggleForm"
-          >
-            {{ toggleForm ? "Seleccionar cliente" : "Nuevo cliente" }}
-          </b-btn>
-          <client-form v-if="toggleForm"></client-form>
-        </tab-content>
-
-        <tab-content title="Categoría">
-          <b-form-select
-            v-if="!toggleForm"
-            v-model="categoria"
-            :options="categorias"
-            ><template #first>
-              <b-form-select-option value="" disabled
-                >-- Seleccione una categoría --</b-form-select-option
+                <b-form-select
+                  id="input-3"
+                  v-model="form.cliente"
+                  :options="clientes"
+                  size="sm"
+                  required
+                ></b-form-select>
+              </b-form-group>
+            </b-col>
+            <b-col
+              ><b-form-group
+                id="input-group-4"
+                label="Categorías:"
+                label-for="input-4"
               >
-            </template></b-form-select
-          >
-
-          <b-btn
-            variant="outline-info"
-            class="mt-3"
-            @click="toggleForm = !toggleForm"
-          >
-            {{ toggleForm ? "Seleccionar categoría" : "Nueva categoría" }}
-          </b-btn>
-          <category-form v-if="toggleForm"></category-form>
-        </tab-content>
-        <tab-content title="Anuncio">
-          <b-form-select
-            v-if="!toggleForm"
-            v-model="publicidad"
-            :options="publicidades"
-            ><template #first>
-              <b-form-select-option value="" disabled
-                >-- Seleccione una publicidad --</b-form-select-option
+                <b-form-select
+                  id="input-4"
+                  v-model="form.categoria"
+                  :options="categorias"
+                  size="sm"
+                  required
+                ></b-form-select> </b-form-group
+            ></b-col>
+            <b-col
+              ><b-form-group
+                id="input-group-5"
+                label="Categorías:"
+                label-for="input-5"
               >
-            </template></b-form-select
-          >
+                <b-form-select
+                  id="input-5"
+                  v-model="form.alcance"
+                  :options="alcances"
+                  size="sm"
+                  required
+                ></b-form-select> </b-form-group
+            ></b-col>
+          </b-row>
 
-          <b-btn
-            variant="outline-info"
-            class="mt-3"
-            @click="toggleForm = !toggleForm"
+          <b-button type="submit" variant="primary">Crear Anuncio</b-button>
+          <b-button type="reset" variant="danger">Reiniciar</b-button>
+        </b-form>
+      </b-col>
+      <b-col md="4">
+        <div>
+          <b-card
+            :title="form.titulo"
+            :img-src="imgURL"
+            img-alt="Image"
+            img-top
+            tag="article"
+            style="max-width: 20rem;"
+            class="mb-2"
           >
-            {{ toggleForm ? "Seleccionar publicidad" : "Nueva publicidad" }}
-          </b-btn>
-          <publicity-form v-if="toggleForm"></publicity-form>
-        </tab-content>
-      </form-wizard>
-    </div>
-  </section>
+            <b-card-text>
+              {{ form.descripcion }}
+            </b-card-text>
+
+            <b-button v-show="share" href="#" variant="primary"
+              >Compartir</b-button
+            >
+          </b-card>
+        </div>
+      </b-col>
+    </b-row>
+  </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import ClientForm from "~/components/ClientForm";
-import CategoryForm from "~/components/CategoryForm";
-import PublicityForm from "~/components/PublicityForm";
-
 export default {
-  components: {
-    ClientForm,
-    CategoryForm,
-    PublicityForm
+  data() {
+    return {
+      imgURL: "https://picsum.photos/600/600/",
+      form: {
+        nombre: "",
+        imagen: null,
+        titulo: "",
+        descripcion: "",
+        cliente: null,
+        categoria: null,
+        alcance: null,
+        checked: []
+      },
+      show: true,
+      share: false,
+      alcances: [
+        { value: null, text: "Seleccione un alcance" },
+        { value: "Municipal", text: "Municipal" },
+        { value: "Provincial", text: "Provincial" },
+        { value: "Nacional", text: "Nacional" },
+        { value: "Internacional", text: "Internacional" }
+      ]
+    };
   },
   async fetch({ store }) {
     await store.dispatch("clients/get");
     await store.dispatch("categories/get");
-    await store.dispatch("publicities/get");
   },
   computed: {
     ...mapState({
@@ -110,63 +172,55 @@ export default {
           value: item.id,
           text: item.nombre
         }));
-      },
-      publicidades: state => {
-        return state.publicities.list.map(item => ({
-          value: item.id,
-          text: item.nombre
-        }));
       }
     })
   },
-  data: function() {
-    return {
-      cliente: null,
-      categoria: null,
-      publicidad: null,
-      toggleForm: false
-    };
-  },
   methods: {
-    onComplete: function() {
-      this.$notify({
-        text: "Creado correctamente",
-        type: "success",
-        group: "alerts"
+    onSubmit() {
+      let vm = this;
+      vm.$store
+        .dispatch("publicities/create", {
+          nombre: vm.form.nombre,
+          textoCorto: vm.form.titulo,
+          textoLargo: vm.form.descripcion,
+          alcance: vm.form.alcance,
+          categoriaId: vm.form.categoria,
+          clienteId: vm.form.ciente
+        })
+        .then(resp => {
+          let msg = resp.data.nombre + " " + "creado";
+          vm.$notify({ text: msg, type: "success", group: "alerts" });
+          vm.share = true;
+        })
+        .catch(resp => {
+          vm.$notify({
+            text: "Ha ocurrido un error en el servidor",
+            type: "warning",
+            group: "alerts"
+          });
+        });
+    },
+    onReset(event) {
+      event.preventDefault();
+      // Reset our form values
+      this.form.titulo = "";
+      this.form.descripcion = "";
+      this.form.cliente = null;
+      this.form.categoria = null;
+      this.form.alcance = null;
+      this.imgURL = "https://picsum.photos/600/600/";
+      this.form.checked = [];
+      this.share = false;
+      // Trick to reset/clear native browser form validation state
+      this.show = false;
+      this.$nextTick(() => {
+        this.show = true;
       });
+    },
+    setImage(e) {
+      const file = e.target.files[0];
+      this.imgURL = URL.createObjectURL(file);
     }
   }
 };
 </script>
-
-<style>
-.container {
-  min-height: 100vh;
-  /* display: flex; */
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
