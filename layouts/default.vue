@@ -40,7 +40,7 @@
                 >Clientes</b-nav-item
               >
               <b-nav-item class="text-white" :to="'/publicities'"
-                >Publicidades</b-nav-item
+                >Anuncios</b-nav-item
               >
               <b-nav-item class="text-white" :to="'/publicities/random'"
                 >Random</b-nav-item
