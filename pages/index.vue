@@ -53,15 +53,26 @@
             ></b-form-textarea>
           </b-form-group>
 
+          <b-form-group id="input-group-1" label="Enlace" label-for="input-1">
+            <b-form-input
+              id="input-3"
+              v-model="form.enlace"
+              type="text"
+              placeholder="Entre el enlace asociado al anuncio"
+              size="sm"
+              required
+            ></b-form-input>
+          </b-form-group>
+
           <b-row>
             <b-col
               ><b-form-group
-                id="input-group-3"
+                id="input-group-4"
                 label="Cliente:"
-                label-for="input-3"
+                label-for="input-4"
               >
                 <b-form-select
-                  id="input-3"
+                  id="input-4"
                   v-model="form.cliente"
                   :options="clientes"
                   size="sm"
@@ -71,12 +82,12 @@
             </b-col>
             <b-col
               ><b-form-group
-                id="input-group-4"
+                id="input-group-5"
                 label="Categorías:"
-                label-for="input-4"
+                label-for="input-5"
               >
                 <b-form-select
-                  id="input-4"
+                  id="input-5"
                   v-model="form.categoria"
                   :options="categorias"
                   size="sm"
@@ -85,12 +96,12 @@
             ></b-col>
             <b-col
               ><b-form-group
-                id="input-group-5"
+                id="input-group-6"
                 label="Categorías:"
-                label-for="input-5"
+                label-for="input-6"
               >
                 <b-form-select
-                  id="input-5"
+                  id="input-6"
                   v-model="form.alcance"
                   :options="alcances"
                   size="sm"

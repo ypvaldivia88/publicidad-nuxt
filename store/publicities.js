@@ -72,6 +72,8 @@ export const actions = {
       textoCorto: params.textoCorto,
       textoLargo: params.textoLargo,
       alcance: params.alcance,
+      fotoUrl: params.fotoUrl,
+      enlace: params.enlace,
       categoriaId: params.categoriaId,
       clienteId: params.clienteId
     });
@@ -82,6 +84,8 @@ export const actions = {
       textoCorto: params.textoCorto,
       textoLargo: params.textoLargo,
       alcance: params.alcance,
+      fotoUrl: params.fotoUrl,
+      enlace: params.enlace,
       categoriaId: params.categoriaId,
       clienteId: params.clienteId
     });

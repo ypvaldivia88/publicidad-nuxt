@@ -66,6 +66,32 @@
         buttons
       ></b-form-radio-group>
     </b-form-group>
+    <b-form-group label="Foto">
+      <b-form-input
+        id="publicityFotoInput"
+        name="publicity[fotoUrl]"
+        ref="fotoUrl"
+        :state="validateState('publicity[fotoUrl]')"
+        type="text"
+        data-vv-delay="500"
+        placeholder="Foto"
+        @input="mergePublicity({ fotoUrl: $event })"
+        :value="publicity.fotoUrl"
+      ></b-form-input>
+    </b-form-group>
+    <b-form-group label="Enlace">
+      <b-form-input
+        id="publicityEnlaceInput"
+        name="publicity[enlace]"
+        ref="enlace"
+        :state="validateState('publicity[enlace]')"
+        type="text"
+        data-vv-delay="500"
+        placeholder="Enlace"
+        @input="mergePublicity({ enlace: $event })"
+        :value="publicity.enlace"
+      ></b-form-input>
+    </b-form-group>
     <b-form-group label="Categorías" v-slot="{ categorias }">
       <b-form-select
         ref="categoriaId"
