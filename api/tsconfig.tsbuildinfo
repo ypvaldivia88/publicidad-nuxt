@@ -1902,8 +1902,8 @@
         "affectsGlobalScope": false
       },
       "./src/models/publicidad.model.ts": {
-        "version": "516bc9f4a81be03a9d17ea8c45d0c87f90331a2b7722618a9892e024b3ffe5a6",
-        "signature": "06a3cc6b2984ed4f0a21f798441f04845860c48936310889c14117df115ce4fc",
+        "version": "75086a0b7176f980dd205b93c634875446bd7ab85ee941aa927ba5c302ee2205",
+        "signature": "9663d0c779263b82ae68a00043057937385dbb4041b55b92788ff6111bd1b433",
         "affectsGlobalScope": false
       },
       "./src/models/categoria.model.ts": {
@@ -2048,7 +2048,7 @@
       },
       "./src/application.ts": {
         "version": "f3b3462521fdaa60e517e8f2ba20effd6d7f0f39deebcb2f32fa3cc744f2d1d2",
-        "signature": "a7fedfdcb8441d2cc6f250213ac7872630ff9d05aa30c7d47b1b2140c7dd7d2d",
+        "signature": "f21fedd2b477b08affa0e1eabf7d94bcfae012aa2fda4b64cec73f632d3e7d54",
         "affectsGlobalScope": false
       },
       "./src/index.ts": {

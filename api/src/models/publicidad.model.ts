@@ -32,6 +32,18 @@ export class Publicidad extends Entity {
 
   @property({
     type: 'string',
+    required: false,
+  })
+  fotoUrl: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  enlace: string;
+
+  @property({
+    type: 'string',
   })
   categoriaId?: string;
 
