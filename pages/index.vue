@@ -129,7 +129,7 @@
               {{ form.descripcion }}
             </b-card-text>
 
-            <b-button v-show="share" href="#" variant="primary"
+            <b-button v-show="share" :href="form.enlace" variant="primary"
               >Compartir</b-button
             >
           </b-card>

@@ -82,6 +82,11 @@ export default {
           sortable: true
         },
         {
+          key: "enlace",
+          label: "Enlace",
+          sortable: true
+        },
+        {
           key: "alcance",
           label: "Alcance",
           sortable: true
