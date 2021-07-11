@@ -9,10 +9,10 @@
         </template></b-form-select
       >
       <b-button size="md" class="ml-2" @click="random">Recargar</b-button>
+      <b-button size="md" class="ml-2" @click="exportar">Exportar</b-button>
     </b-nav-form>
 
     <!-- {{ publicidad }} -->
-    <b-button @click="exportar">Exportar</b-button>
     <div
       v-show="categoria && publicidad"
       class="embed-responsive embed-responsive-16by9 mt-4"
@@ -24,6 +24,10 @@
         name="myIframe"
         allowfullscreen
       ></iframe>
+
+      <object data="/iframe.html">
+        Your browser doesn’t support the object tag.
+      </object>
     </div>
     <div v-show="categoria && !publicidad">
       No se han encontrado anuncios para esta categoria
@@ -71,6 +75,7 @@ export default {
             this.publicidad.fotoUrl = "https://source.unsplash.com/random";
             const iframe = findIframeByName("myIframe");
             iframe.loadData(this.publicidad);
+            console.log(iframe.document);
           } else this.publicidad = null;
         })
         .catch(err => console.log(err.message));
