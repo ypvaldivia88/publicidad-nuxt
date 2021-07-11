@@ -12,12 +12,13 @@
     </b-nav-form>
 
     <!-- {{ publicidad }} -->
-
+    <b-button @click="exportar">Exportar</b-button>
     <div
       v-show="categoria && publicidad"
       class="embed-responsive embed-responsive-16by9 mt-4"
     >
       <iframe
+        ref="template"
         class="embed-responsive-item"
         :src="publicityFrame.src"
         name="myIframe"
@@ -73,6 +74,9 @@ export default {
           } else this.publicidad = null;
         })
         .catch(err => console.log(err.message));
+    },
+    exportar() {
+      console.log(this.$refs.template.$el);
     }
   }
 };

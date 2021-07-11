@@ -1,7 +1,7 @@
 <template>
   <b-row>
     <b-col>
-      <b-btn variant="outline-success" class="mb-3" :to="'/publicities/new'">
+      <b-btn variant="outline-success" class="mb-3" :to="'/'">
         Nuevo Anuncio
       </b-btn>
       <b-btn variant="outline-success" class="mb-3" :to="'/publicities/random'">

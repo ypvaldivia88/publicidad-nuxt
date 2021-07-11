@@ -97,7 +97,7 @@
             <b-col
               ><b-form-group
                 id="input-group-6"
-                label="Categorías:"
+                label="Alcance:"
                 label-for="input-6"
               >
                 <b-form-select
